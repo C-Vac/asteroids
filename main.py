@@ -39,14 +39,23 @@ def main():
         for obj in drawable:
           obj.draw(screen)
 
+
+
         pygame.display.flip()
         dt = clock.tick(60) / 1000
 
         # collision detection
         for obj in asteroids:
-           if obj.check_for_collision(player):
+            if obj.check_for_collision(player):
               print("Game over!")
               return
+            for shot in shots:
+               if obj.check_for_collision(shot):
+                  print("asteroid hit")
+                  shot.kill()
+                  obj.split()
+                  break
+
            
 
 if __name__ == "__main__":
