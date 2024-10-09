@@ -39,5 +39,12 @@ def main():
         pygame.display.flip()
         dt = clock.tick(60) / 1000
 
+        # collision detection
+        for obj in asteroids:
+           if obj.check_for_collision(player):
+              print("Game over!")
+              return
+           
+
 if __name__ == "__main__":
     main()
